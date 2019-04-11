@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Welcome to Uiza APIs documentation! Uiza helps you build powerful video platforms by providing easy-to-use APIs that follow [RESTful](https://en.wikipedia.org/wiki/Representational_state_transfer) standards. Our APIs have predictable, resource-oriented URLs, accept [encoded-form](https://en.wikipedia.org/wiki/POST_(HTTP)#Use_for_submitting_web_forms) request bodies, and return [JSON-Objects](https://www.json.org/) with [HTTP response status codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) to indicate the failure or success of the API requests.
+Welcome to Uiza APIs documentation! Uiza helps you build powerful video platforms by providing easy-to-use APIs that follow [RESTful](https://en.wikipedia.org/wiki/Representational_state_transfer) standards. Our APIs have predictable, resource-oriented URLs, accept [encoded-form](https://en.wikipedia.org/wiki/POST_(HTTP)#Use_for_submitting_web_forms) request bodies, use [authentication](https://github.com/luungoc/uizadocumentation/blob/v2/UizaDocumentation.md#authentication), verbs, and return [JSON-Objects](https://www.json.org/) with [HTTP response status codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes).
 
 *Important: You cannot run the sample requests in this guide as-is. Replace call-specific parameters such as `tokens` and `AppIDs` with your own values. See [Generate API Key]() to obtain your own keys.*
 
