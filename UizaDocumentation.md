@@ -62,7 +62,7 @@ Error Code | Description
 400 - Bad Request | The request was unacceptable, often due to missing a required parameter.
 401 - Unauthorized | No valid [API key](https://github.com/luungoc/uizadocumentation/blob/v2/UizaDocumentation.md#generate-api-key) provided.
 404 - Not Found | The request resource doesn't exist.
-422 - Unprocessable | The syntax of the request is incorrect, often due to invalid parameter(s)
+422 - Unprocessable | The syntax of the request is incorrect, often due to invalid parameter(s).
 500 - Internal Server Error | There is a problem with the Uiza server. Try again later.
 501 - Service Unavailable | The Uiza server is overloaded or is down for maintenance.
 
@@ -85,7 +85,7 @@ Was this section helpful? [Yes]() [No]()
 
 ## Video
 
-Uiza calls videos as `Entities`. You can create entities by uploading media files using [HTTP](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol), [FTP](https://en.wikipedia.org/wiki/File_Transfer_Protocol), and [S3](https://en.wikipedia.org/wiki/Amazon_S3) links. The Video APIs provide CRUD operations (create, retrieve, update, delete) on the entities . You can retrieve individual entities as well as a list of all of your entities.
+Uiza calls videos as `Entities`. You can create entities by uploading media files using [HTTP](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol), [FTP](https://en.wikipedia.org/wiki/File_Transfer_Protocol), and [S3](https://en.wikipedia.org/wiki/Amazon_S3) links. The Video APIs provide CRUD operations (create, retrieve, update, delete) on the entities. You can retrieve individual entities as well as a list of all of your entities.
 
 All videos (`entities`) need to be [published]() before the public can view them. Unpublished videos can still be [edited]() and [listed]() by APIs or using [Dashboard](https://dashboard.uiza.io/), but the [Player]() cannot play them.
 
