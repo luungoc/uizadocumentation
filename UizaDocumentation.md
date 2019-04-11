@@ -2,41 +2,26 @@
 
 ## Introduction
 
-Welcome to Uiza APIs documentation! Uiza helps you build powerful video platforms by providing easy-to-use APIs that follow RESTful standards. Our APIs have predictable, resource-oriented URLs, and use HTTP response status codes to indicate API errors. A JSON object is returned by all API responses, including errors.
+Welcome to Uiza APIs documentation! Uiza helps you build powerful video platforms by providing easy-to-use APIs that follow [RESTful](https://en.wikipedia.org/wiki/Representational_state_transfer) standards. Our APIs have predictable, resource-oriented URLs, accept [encoded-form](https://en.wikipedia.org/wiki/POST_(HTTP)#Use_for_submitting_web_forms) request bodies, and return [JSON-Objects](https://www.json.org/) with [HTTP response status codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) to indicate the failure or success of the API requests.
 
-You can view code examples provided in different programming languages in the code snippet on the right.
+*Important: You cannot run the sample requests in this guide as-is. Replace call-specific parameters such as `tokens` and `AppIDs` with your own values. See [Generate API Key]() to obtain your own keys.*
 
-## Global Format APIs
-
-Below is the default format of all API responses:
-
-Parameter | Type | Description
------------- | ------------- | -------------
-data | Object | An array (mutiple items), or an object (single item)
-version | Number | The version of the API
-dateTime | Datetime | The response time of the API (GTM+0)
-policy | String | The type of the calling method (public)
-requestId | String | The response ID of the request
-serviceName | String | The service name
-message | String | The response message
-code | Number | The Status Reponse code
-type | String | The result of the API call
-
-*Note:* The `requestId` should be included in your email or your chat for faster support from Uiza.
+Was this section helpful? [Yes]() [No]()
 
 ## Authentication
 
-The Uiza APIs use **API keys** to authenticate requests. You can view and manage your **API keys** in the **Uiza Dashboard**.
+The Uiza APIs use [API keys]() to authenticate requests. You can view and manage your [API keys]() in the [Uiza Dashboard](https://dashboard.uiza.io/).
 
-Your **API keys** contain rights and permissions to your account; therefore, make sure to keep them secure. Do not share your API keys in publicly accessible areas such as GitHub, client-side code, and so forth.
+Your [API keys]() contain rights and permissions to your account; therefore, make sure to keep them secure. Do not share your API keys in publicly accessible areas such as GitHub, client-side code, and so forth.
 
-Authentication to the API is performed via HTTP Basic Authorization. Provide your API key as the basic auth username value. You do not need to provide a password for authorization.
-
-If you need to authenticate via bearer authorization (e.g., for a cross-origin request), use `-H "Authorization: Bearer uap-5126204af4ee487f9c295525f03b9268-353340ef"` instead of `-u uap-5126204af4ee487f9c295525f03b9268-353340ef`.
+Was this section helpful? [Yes]() [No]()
 
 ### Generate API Key
 
-**Step 1**: Login to your workspace.  
+**Step 1**: [Login](https://account.uiza.io/) to your workspace. If you don't have an account yet, sign up [here](https://account.uiza.io/register).  
+
+![Screen 0](./screen0.png)
+
 **Step 2**: Navigate to the **APPLICATION SETTINGS** section, select **Publish API**. An API key is provided to you by default.  
 
 ![Screen 1](./screen1.png)
@@ -45,174 +30,23 @@ If you need to authenticate via bearer authorization (e.g., for a cross-origin r
 
 ![Screen 2](./screen2.png)
 
-## User Management
+### Use API Key to Authenticate Your API Requests
 
-You can manage users with APIs user. Uiza has 2 levels of user:
+Authentication to the API is performed via [HTTP Basic Auth](https://en.wikipedia.org/wiki/Basic_access_authentication). Provide your [API key]() as the basic auth username value. You do not need to provide a password for authentication.
 
-Admin - This account level has the highest priority, including permission to create and manage users.
+If you need to authenticate via [bearer auth](https://tools.ietf.org/html/rfc6750) (e.g., for a cross-origin request), use `-H "Authorization: Bearer uap-5126204af4ee487f9c295525f03b9268-353340ef"` instead of `-u uap-5126204af4ee487f9c295525f03b9268-353340ef`.
 
-User - This account level is under the Admin level. It only manages the APIs of the account.
+Was this section helpful? [Yes]() [No]()
 
-### Create a User
+## Request Body
 
-Create a user account in your workspace.
+Uiza APIs accept request arguments as a [JSON-Object](https://www.json.org/) in the HTTP request body.
 
-#### Header Request
+Was this section helpful? [Yes]() [No]()
 
-Header | Type | Description | Required
------------- | ------------- | ------------- | -------------
-Authorization | String | The API key | Yes
+## Error Codes
 
-#### Body Request
-
-Parameter | Type | Description | Required
------------- | ------------- | ------------- | -------------
-status | integer | The status of the account: (0 = de-active, 1 = active) | Yes
-username | string | The username used to log into the account | Yes
-email | string | The email used to log into the account | Yes
-password | string | The password of the account (from A to z, 6 to 25 characters) | Yes
-avatar | string | The link of the avatar (recommending a 300x300px image) | No
-fullname | string | The user's fullname| No
-dob | date | The user's date of birth (MM/DD/YYYY) | No
-gender | integer | The user's gender (0 = Male, 1 = Female)| No
-isAdmin | integer | Indicates whether the user is an administrator or not (0: No, 1: Yes) | No
-
-#### Response Parameter
-
-Parameter | Type | Description
------------- | ------------- | -------------
-id | string | The identifier of the newly created user
-
-### Retrieve a User
-
-Retrieve a user using their corresponding identifier, which is returned upon creation.
-
-#### Header Request
-
-Header | Type | Description | Required
------------- | ------------- | ------------- | -------------
-Authorization | String | The API key | Yes
-
-#### Body Request
-
-Parameter | Type | Description | Required
------------- | ------------- | ------------- | -------------
-id | string | The identifier of the user | Yes
-
-#### Response Parameter
-
-Parameter | Type | Description
------------- | ------------- | -------------
-id | string | The identifier of the user
-isAdmin | integer | Indicates whether the user is an administrator or not (0: No, 1: Yes)
-username | string | The username used to log into the account | Yes
-email | string | The email used to log into the account
-createdAt | datetime | The time when the user was created
-updatedAt | datetime | The time when the user was updated
-
-## Video
-
-The following APIs are used to create and manage your media file(s), which we called `entity/entities`.
-
-### Create an Entity
-
-Create an entity with a full URL. Direct HTTP/HTTPS, FTP, and AWS S3 links are acceptable.
-
-#### Header Request
-
-Header | Type | Description | Required
------------- | ------------- | ------------- | -------------
-Authorization | String | The API key | Yes
-
-#### Body Request
-
-Parameter | Type | Description | Note |Required
------------- | ------------- | ------------- | ------------- | -------------
-name | string | The name of the entity | | Yes
-url | text | The full URL of the media file (direct public HTTP/HTTPS, FTP, AWS S3) | Send an empty string in case of integration using AWS SDK to upload to your media file to Uiza's storage | Yes
-inputType | enum | The type of URL. Allowed values: `http, s3, ftp, s3-uiza`. | In case `url` is empty string, this must be `s3-uiza` | Yes
-description | text | The full description of the entity (no length restriction) | | No
-metadataId | array | Add relation between entity and folder/playlist | | No
-shortDescription | text | The short description of the entity (at most 250 characters) | | No
-poster | string | The poster of the entity | | No
-thumbnail | string | The thumbnail of the entity | | No
-metadataIds | array | List of categories will be attached with the entity | | No
-extendMetadata | string | Additional information of the entity | You can input additional information of the entity using the [ key : value ] format. All information will be shown in the entity's detail. | No
-embedMetadata | string | See Embedded Metadata for more information | | No
-
-#### Response Parameter
-
-Parameter | Type | Description
------------- | ------------- | -------------
-id | string | The identifier of the newly created entity
-
-### Category
-
-Create an entity category for easier management. A category is used to group all entities of the same type into a folder, playlist, or tag.
-
-#### Header Request
-
-Header | Type | Description | Required
------------- | ------------- | ------------- | -------------
-Authorization | String | The API key | Yes
-
-#### Body Request
-
-Parameter | Type | Description |Required
------------- | ------------- | ------------- | -------------
-name | string | The name of the category | Yes
-type | enum | The type of the category. Allowed values: `folder, playlist, tag` | Yes
-description | string | The description of the category | Yes
-orderNumber | integer | The order number of the category. The lower the number, the higher the order | No
-icon | array | Small icon of the category | No
-
-#### Response Parameter
-
-Parameter | Type | Description
------------- | ------------- | -------------
-id | string | The identifier of the newly created category
-
-### Live Streaming
-
-The following APIs are used to create and manage live streaming events.  
-
-*Notes:*  
-A `Live` not started yet is called an `Event`.  
-An `Event` already started is called a `Feed`.
-
-#### Create a Live Event
-
-Create a live streaming event. A live stream can be setup and started later, or can be setup and started right after setting up. The `Live Channel Minutes` count increases when the event starts.  
-
-#### Header Request
-
-Header | Type | Description | Required
------------- | ------------- | ------------- | -------------
-Authorization | String | The API key | Yes
-
-#### Body Request
-
-Parameter | Type | Description | Note | Required
------------- | ------------- | ------------- | ------------- | -------------
-name | string | The name of the event (at most 100 characters) | | Yes
-mode | string | The type of the event. Allowed values: `pull, push` | Pull: We support RTMP, HLS and direct Live Youtube link. Uiza pulls feed from the pull link and broadcasts it using the Uiza SDK. Push: Uiza gives you a Publish endpoint, you can push feed into the endpoint, and Uiza will broadcast it using the Uiza SDK. | Yes
-encode | string | The mode of the live stream (0 = no encode, 1 = encode) | | Yes
-dvr | enum | The feed after streamed will be recorded as a mp4 file (0 = No record, 1 = Active Feature record) | | Yes
-description | text | The description of the live stream | | No
-linkPublishSocial | array | The information to share the live on social media: `dropdown`: type of social media (Youtube, Facebook). `address`: the stream URL. `streamKey`: the stream key correspond to the stream URL.|  | No
-thumbnail | text | An image link | | No
-linkStream | array | The link streaming if you choose `mode=pull`| | Yes
-resourceMode | array | The resource mode ( `single` = only 1 feed & output, `redundant` = more than 1 feed & output to backup) | | Yes
-
-#### Response Parameter
-
-Parameter | Type | Description
------------- | ------------- | -------------
-id | string | The identifier of the newly created event
-
-### Error Codes
-
-Uiza uses conventional HTTP response status codes to indicate the success or failure of an API request. In general:  
+Uiza uses standard [HTTP response status codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) to indicate the status of an API request. In general:  
 
 * Codes in the `2xx` range indicate a success.
 
@@ -220,7 +54,7 @@ Uiza uses conventional HTTP response status codes to indicate the success or fai
 
 * Codes in the `5xx` range indicate an error with Uiza's servers.
 
-#### Error List
+### Error List
 
 Error Code | Description
 ------------ | -------------
@@ -231,3 +65,130 @@ Error Code | Description
 422 - Unprocessable | The syntax of the request is incorrect, often due to invalid parameter(s)
 500 - Internal Server Error | There is a problem with the Uiza server. Try again later.
 501 - Service Unavailable | The Uiza server is overloaded or is down for maintenance.
+
+## Pagination
+
+All top-level API resources support bulk fetches via **list** APIs. For instance, you can [list entities](), [list categories](), and [list invoices](). These list APIs share a common structure, taking at least these two parameters: `limit`, `page`.
+
+### List Response Format
+
+Attribute | Type | Description
+------------ | ------------- | -------------
+data | string | An array containing the actual response elements, paginated by any request parameters.
+metadata | string | Contains `total` as total number of data without pagination, `result` as number of paginated data, `page` as current page, `limit` as how many records each array of data contains.
+
+## Request IDs
+
+## Video
+
+Uiza calls videos as `Entities`. You can create entities by uploading media files using [HTTP](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol), [FTP](https://en.wikipedia.org/wiki/File_Transfer_Protocol), and [S3](https://en.wikipedia.org/wiki/Amazon_S3) links. The Video APIs provide CRUD operations (create, retrieve, update, delete) on the entities . You can retrieve individual entities as well as a list of all of your entities.
+
+All videos (`entities`) need to be [published]() before the public can view them. Unpublished videos can still be [edited]() and [listed]() by APIs or using [Dashboard](https://dashboard.uiza.io/), but the [Player]() cannot play them.
+
+Was this section helpful? [Yes]() [No]()
+
+### The Entity Object
+
+Attribute | Type | Description | Note
+------------ | ------------- | ------------- | -------------
+id | string | The unique identifier of the entity (video) object |
+name | string | The video's name | Displayed to the end users
+url | text | The full URL of the media file (direct public [HTTP](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol), [FTP](https://en.wikipedia.org/wiki/File_Transfer_Protocol), and [AWS S3](https://en.wikipedia.org/wiki/Amazon_S3)) | Send **an empty string** if you upload with the AWS SDK.
+inputType | enum | The type of URL. Allowed values: `http, s3, ftp, s3-uiza`. | In case `url` is **an empty string**, this must be `s3-uiza`.
+description | text | The full description of the video.  (at most 65,535 characters) | Displayed to the end users
+metadataId | array | medataId is [CategoryId]() |
+shortDescription | text | The short description of the video (at most 250 characters)| Displayed to the end users
+poster | string | The video poster's URL | Displayed to the end users
+thumbnail | string | The video's [thumbnail](https://en.wikipedia.org/wiki/Thumbnail) URL | Displayed to the end users
+type | enum | Has 2 types: `VOD` and `AOD` | `VOD` stands for [Video on Demand](https://en.wikipedia.org/wiki/Video_on_demand). `AOD` stands for [Audio on Demand](https://www.muvi.com/wiki/audio-on-demand.html)
+duration | string | The duration of the entity in seconds (at most one million seconds) | Displayed to the end users
+metadataIds | array | A list of categories of this entity | | No
+extendMetadata | object | A set of key-value pairs as additional information that you can attach to a video object | Displayed to the end users
+embedMetadata | object | A set of predefined key-value pairs that you can attach to a video object, meant to be displayable to end users. See [Embed Metadata]().
+view | number | The total times that the video has been viewed
+publishpublishoCdn | string | The status of the publishing task. Allowed values: `queue`, `not-ready`, `success`, `failed`
+createdAt | datetime | The time at which the entity was created, in [ISO 8601 format](https://www.w3.org/TR/NOTE-datetime-970915)|
+editedAt | datetime | The time at which the entity was last edited, in [ISO 8601 format](https://www.w3.org/TR/NOTE-datetime-970915)|
+
+### Create an Entity
+
+Creates an entity with a full URL, which can be a direct [HTTP/HTTPS](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol), [FTP](https://en.wikipedia.org/wiki/File_Transfer_Protocol), and [S3](https://en.wikipedia.org/wiki/Amazon_S3) link.
+
+#### The Entity Object
+
+Parameter | Type | Description | Note |Required
+------------ | ------------- | ------------- | ------------- | -------------
+name | string | The name of the entity | | Yes
+url | text | The full URL of the media file (direct public [HTTP](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol), [FTP](https://en.wikipedia.org/wiki/File_Transfer_Protocol), hyper links, and [AWS S3](https://en.wikipedia.org/wiki/Amazon_S3)) | Send **an empty string** if you upload with SDK | Yes
+inputType | enum | The type of URL. Allowed values: `http, s3, ftp, s3-uiza`. | In case `url` is **an empty string**, this must be `s3-uiza` | Yes
+description | text | The full description of the video to be displayed to the end users (at most 65,535 characters) | | No
+metadataId | array | medataId is [CategoryId]() | | No
+shortDescription | text | The short description of the video (at most 250 characters)| Displayed to the end users | No
+poster | string | The video poster's URL | Displayed to the end users | No
+thumbnail | string | The video's [thumbnail](https://en.wikipedia.org/wiki/Thumbnail) URL | Displayed to the end users | No
+metadataIds | array | A list of categories of this video | | No
+extendMetadata | object | A set of key-value pairs as additional information that you can attach to a video object | Displayed to the end users | No
+embedMetadata | object | A set of predefined key-value pairs that you can attach to a video object. See [Embed Metadata](). | Displayed to the end users | No
+
+*Note: If you want to integrate with Uiza using the AWS SDK to upload your media files to Uiza storage, please leave parameter `url` **empty**, and set parameter `inputType` to `s3-uiza`.*
+
+#### Response
+
+Parameter | Type | Description
+------------ | ------------- | -------------
+id | string | The identifier of the newly created entity
+
+Was this section helpful? [Yes]() [No]()
+
+### Live Streaming
+
+Live streaming is managed by Uiza's `Live Event`. A live event allows you to **pull** contents from other sources such as Youtube or any HLS link. You can also broadcast a live stream with a **push** type of live event.
+
+A live event can be recorded. These records are save as [entities]().
+
+To start a live stream, you must create a live event first.
+
+***IMPORTANT**: Live minutes start counting as soon as the live event starts.*
+
+Was this section helpful? [Yes]() [No]()
+
+#### The Live Event Object
+
+Attribute | Type | Description | Note
+------------ | ------------- | ------------- | -------------
+name | string | The name of the event (at most 100 characters) |
+mode | string | The type of the event. Allowed values: `pull | push` |**Pull** link can either be a [RTMP](https://en.wikipedia.org/wiki/Real-Time_Messaging_Protocol) URL or a .m3u8 URL ([HLS](https://en.wikipedia.org/wiki/HTTP_Live_Streaming)) or any Youtube link (live or not). **Push**: Uiza will generate an end point, which can be used in broadcasting softwares such as [OBS](https://obsproject.com/) to start your streaming.
+encode | string | Set to `1` to enable live transcoding. Live transcoding will enable [Adaptive Bitrate](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) on the end user's side which would help deliver a better viewing experience. When set to `0`, the end users will watch with source bitrate. |
+dvr | enum | Indicates whether to record a live stream. If set to `1`, a [mp4](https://en.wikipedia.org/wiki/MPEG-4_Part_14) file will be generated after the live stream ends. Set to `0` to disable this feature. |
+linkPublishSocial | array | Live feed will be posted on this set of social media links.
+poster | string | The video's poster `URL` | Displayed to the end users
+thumbnail | string | The [thumbnail](https://en.wikipedia.org/wiki/Thumbnail)'s `URL` | Displayed to the end users
+channelName | string | The key name of the channel. | Yes
+createdAt | datetime | The time at which the event was created, in [ISO 8601 format](https://www.w3.org/TR/NOTE-datetime-970915)|
+editedAt | datetime | The time at which the event was last edited, in [ISO 8601 format](https://www.w3.org/TR/NOTE-datetime-970915)|
+
+#### Create a Live Event
+
+You can create a new live event to manage a live stream.
+
+***IMPORTANT**: Live minutes start counting as soon as the live event starts.*
+
+#### The Live Event Object
+
+Parameter | Type | Description | Note | Required
+------------ | ------------- | ------------- | ------------- | ------------- | -------------
+name | string | The name of the event (at most 100 characters) | | Yes
+mode | string | The type of the event. Allowed values: `pull | push` |**Pull** link can either be a [RTMP](https://en.wikipedia.org/wiki/Real-Time_Messaging_Protocol) URL, or a .m3u8 URL ([HLS](https://en.wikipedia.org/wiki/HTTP_Live_Streaming)), or any Youtube link (live or not). **Push**: Uiza will generate an end point, which can be used on broadcasting softwares such as [OBS](https://obsproject.com/) to start your streaming | Yes
+encode | string | Set to `1` to enable live transcoding. Live transcoding will enable [Adaptive Bitrate](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) on the viewer's side which would help deliver a better viewing experience. When set to `0`, the end users will watch with source bitrate. | | Yes
+dvr | enum | Indicates whether to record a live stream. If set to `1`, a [mp4](https://en.wikipedia.org/wiki/MPEG-4_Part_14) file will be created after the live stream ended. Set to `0` to disable this feature. | | Yes
+linkPublishSocial | array | Live feed will be posted on this set of social media links.
+thumbnail | string | The thumbnail's `URL` | Displayed to the end users
+channelName | string | The key name of the channel. | |
+linkStream | array | A list of streamable sources that will be used when mode = pull.| | Yes
+resourceMode | enum | Resource mode ( single = only 1 feed & output), redundant = more than 1 feed & output to backup)| | Yes
+
+#### Response Parameter
+
+Parameter | Type | Description
+------------ | ------------- | -------------
+id | string | The identifier of the newly created event
