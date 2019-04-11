@@ -167,7 +167,7 @@ dvr | enum | Indicates whether to record a live stream. If set to `1`, a [mp4](h
 linkPublishSocial | array | Live feed will be posted on this set of social media links.
 poster | string | The video's poster `URL` | Displayed to the end users
 thumbnail | string | The [thumbnail](https://en.wikipedia.org/wiki/Thumbnail)'s `URL` | Displayed to the end users
-channelName | string | The key name of the channel. | Yes
+channelName | string | The key name of the channel. |
 createdAt | datetime | The time at which the event was created, in [ISO 8601 format](https://www.w3.org/TR/NOTE-datetime-970915)|
 editedAt | datetime | The time at which the event was last edited, in [ISO 8601 format](https://www.w3.org/TR/NOTE-datetime-970915)|
 
