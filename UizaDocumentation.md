@@ -60,7 +60,7 @@ Error Code | Description
 ------------ | -------------
 200 - OK | The request was successful.
 400 - Bad Request | The request was unacceptable, often due to missing a required parameter.
-401 - Unauthorized | No valid API key provided.
+401 - Unauthorized | No valid [API key](https://github.com/luungoc/uizadocumentation/blob/v2/UizaDocumentation.md#generate-api-key) provided.
 404 - Not Found | The request resource doesn't exist.
 422 - Unprocessable | The syntax of the request is incorrect, often due to invalid parameter(s)
 500 - Internal Server Error | There is a problem with the Uiza server. Try again later.
