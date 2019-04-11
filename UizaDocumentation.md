@@ -191,7 +191,7 @@ channelName | string | The key name of the channel. | |
 linkStream | array | A list of streamable sources that will be used when mode = pull.| | Yes
 resourceMode | enum | Resource mode ( single = only 1 feed & output), redundant = more than 1 feed & output to backup)| | Yes
 
-#### Response Parameter
+#### Response
 
 Parameter | Type | Description
 ------------ | ------------- | -------------
