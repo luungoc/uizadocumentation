@@ -10,9 +10,9 @@ Was this section helpful? [Yes]() [No]()
 
 ## Authentication
 
-The Uiza APIs use [API keys]() to authenticate requests. You can view and manage your [API keys]() in the [Uiza Dashboard](https://dashboard.uiza.io/).
+The Uiza APIs use [API keys](https://github.com/luungoc/uizadocumentation/blob/v2/UizaDocumentation.md#generate-api-key) to authenticate requests. You can view and manage your [API keys](https://github.com/luungoc/uizadocumentation/blob/v2/UizaDocumentation.md#generate-api-key) in the [Uiza Dashboard](https://dashboard.uiza.io/).
 
-Your [API keys]() contain rights and permissions to your account; therefore, make sure to keep them secure. Do not share your API keys in publicly accessible areas such as GitHub, client-side code, and so forth.
+Your [API keys](https://github.com/luungoc/uizadocumentation/blob/v2/UizaDocumentation.md#generate-api-key) contain rights and permissions to your account; therefore, make sure to keep them secure. Do not share your [API keys](https://github.com/luungoc/uizadocumentation/blob/v2/UizaDocumentation.md#generate-api-key) in publicly accessible areas such as GitHub, client-side code, and so forth.
 
 Was this section helpful? [Yes]() [No]()
 
@@ -32,7 +32,7 @@ Was this section helpful? [Yes]() [No]()
 
 ### Use API Key to Authenticate Your API Requests
 
-Authentication to the API is performed via [HTTP Basic Auth](https://en.wikipedia.org/wiki/Basic_access_authentication). Provide your [API key]() as the basic auth username value. You do not need to provide a password for authentication.
+Authentication to the API is performed via [HTTP Basic Auth](https://en.wikipedia.org/wiki/Basic_access_authentication). Provide your [API key](https://github.com/luungoc/uizadocumentation/blob/v2/UizaDocumentation.md#generate-api-key) as the basic auth `username` value. You do not need to provide a password for authentication.
 
 If you need to authenticate via [bearer auth](https://tools.ietf.org/html/rfc6750) (e.g., for a cross-origin request), use `-H "Authorization: Bearer uap-5126204af4ee487f9c295525f03b9268-353340ef"` instead of `-u uap-5126204af4ee487f9c295525f03b9268-353340ef`.
 
@@ -78,6 +78,10 @@ data | string | An array containing the actual response elements, paginated by a
 metadata | string | Contains `total` as total number of data without pagination, `result` as number of paginated data, `page` as current page, `limit` as how many records each array of data contains.
 
 ## Request IDs
+
+Each API request has an associated request identifier. You can find this value as the `u-request-id` (Uiza's Request ID) in the response header. **If you need to contact us about a specific request, providing the request identifier will ensure the fastest possible resolution.**
+
+Was this section helpful? [Yes]() [No]()
 
 ## Video
 
