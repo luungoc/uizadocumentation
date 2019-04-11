@@ -142,7 +142,7 @@ Was this section helpful? [Yes]() [No]()
 
 ### Live Streaming
 
-Live streaming is managed by Uiza's `Live Event`. A live event allows you to **pull** contents from other sources such as Youtube or any HLS link. You can also broadcast a live stream with a **push** type of live event.
+Live streaming is managed by Uiza's `Live Event`. A live event allows you to **pull** contents from other sources such as [Youtube](https://www.youtube.com/) or any [HLS](https://en.wikipedia.org/wiki/HTTP_Live_Streaming) link. You can also broadcast a live stream with a **push** type of live event.
 
 A live event can be recorded. These records are save as [entities]().
 
@@ -176,9 +176,9 @@ You can create a new live event to manage a live stream.
 #### The Live Event Object
 
 Parameter | Type | Description | Note | Required
------------- | ------------- | ------------- | ------------- | ------------- | -------------
+------------ | ------------- | ------------- | ------------- | -------------
 name | string | The name of the event (at most 100 characters) | | Yes
-mode | string | The type of the event. Allowed values: `pull | push` |**Pull** link can either be a [RTMP](https://en.wikipedia.org/wiki/Real-Time_Messaging_Protocol) URL, or a .m3u8 URL ([HLS](https://en.wikipedia.org/wiki/HTTP_Live_Streaming)), or any Youtube link (live or not). **Push**: Uiza will generate an end point, which can be used on broadcasting softwares such as [OBS](https://obsproject.com/) to start your streaming | Yes
+mode | string | The type of the event. Allowed values: `pull`, `push` | **Pull** link can either be a [RTMP](https://en.wikipedia.org/wiki/Real-Time_Messaging_Protocol) URL, or a .m3u8 URL ([HLS](https://en.wikipedia.org/wiki/HTTP_Live_Streaming)), or any Youtube link (live or not). **Push**: Uiza will generate an end point, which can be used on broadcasting softwares such as [OBS](https://obsproject.com/) to start your streaming | Yes
 encode | string | Set to `1` to enable live transcoding. Live transcoding will enable [Adaptive Bitrate](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) on the viewer's side which would help deliver a better viewing experience. When set to `0`, the end users will watch with source bitrate. | | Yes
 dvr | enum | Indicates whether to record a live stream. If set to `1`, a [mp4](https://en.wikipedia.org/wiki/MPEG-4_Part_14) file will be created after the live stream ended. Set to `0` to disable this feature. | | Yes
 linkPublishSocial | array | Live feed will be posted on this set of social media links.
