@@ -161,7 +161,7 @@ Was this section helpful? [Yes]() [No]()
 Attribute | Type | Description | Note
 ------------ | ------------- | ------------- | -------------
 name | string | The name of the event (at most 100 characters) |
-mode | string | The type of the event. Allowed values: `pull | push` |**Pull** link can either be a [RTMP](https://en.wikipedia.org/wiki/Real-Time_Messaging_Protocol) URL or a .m3u8 URL ([HLS](https://en.wikipedia.org/wiki/HTTP_Live_Streaming)) or any Youtube link (live or not). **Push**: Uiza will generate an end point, which can be used in broadcasting softwares such as [OBS](https://obsproject.com/) to start your streaming.
+mode | string | The type of the event. Allowed values: `pull`, `push` |**Pull** link can either be a [RTMP](https://en.wikipedia.org/wiki/Real-Time_Messaging_Protocol) URL or a .m3u8 URL ([HLS](https://en.wikipedia.org/wiki/HTTP_Live_Streaming)) or any Youtube link (live or not). **Push**: Uiza will generate an end point, which can be used in broadcasting softwares such as [OBS](https://obsproject.com/) to start your streaming.
 encode | string | Set to `1` to enable live transcoding. Live transcoding will enable [Adaptive Bitrate](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) on the end user's side which would help deliver a better viewing experience. When set to `0`, the end users will watch with source bitrate. |
 dvr | enum | Indicates whether to record a live stream. If set to `1`, a [mp4](https://en.wikipedia.org/wiki/MPEG-4_Part_14) file will be generated after the live stream ends. Set to `0` to disable this feature. |
 linkPublishSocial | array | Live feed will be posted on this set of social media links.
